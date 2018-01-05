@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -101,9 +102,15 @@ public class MinesweeperGameActivity extends AppCompatActivity {
                 if (mines.contains(view.getResources().getResourceName(view.getId()))) { //red mine is opened
                     imageView.setImageDrawable(getResources().getDrawable(R.drawable.red_star));
                     openedRedMine();
+                    //sounds from freesound.org
+                    MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.incorrect);
+                    mp.start();
                 } else {
                     imageView.setImageDrawable(getResources().getDrawable(R.drawable.green_star));
                     openedGreenMine();
+                    //sounds from freesound.org
+                    MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.correct);
+                    mp.start();
                 }
                 imageView.setRotationY(270f);
                 imageView.animate().rotationY(360f).setListener(null);
